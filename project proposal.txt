@@ -1,0 +1,15 @@
+
+Burger Barn 
+
+
+1 login and registration
+2 order food and beverages
+3 setup favorties from the menu
+4 view past orders
+5 customize ingredients for burgers
+6 edit your details name age location etc
+7 delete account or past orders
+
+extra
+api to view your address and confirm
+add guest option when logging in to bypass login/registration
