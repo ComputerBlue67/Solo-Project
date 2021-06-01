@@ -18,7 +18,9 @@
         {% endfor %}
     </ul>
     {% endif %}
-    <div id="log-reg">
+    <div class="container">
+        <div class="row">
+            <div class="col">
         <section>
             <h2>Register</h2>
             <form action="/register" method="post">
@@ -31,7 +33,6 @@
                     <label for="last_name">Last Name</label>
                     <input type="text" name="last_name" id="last_name" class="form-control">
                 </div>
-                <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" class="form-control">
                 </div>
@@ -46,6 +47,8 @@
                 <button class="btn btn-primary">Register</button>
             </form>
         </section>
+        </div>
+        <div class="col">
         <section>
             <h2>Login</h2>
             <form action="/login" method="post">
@@ -62,6 +65,8 @@
                 <button class="btn btn-primary">Register</button>
             </form>
         </section>
+    </div>
+    </div>
     </div>
 </body>
 </html>
