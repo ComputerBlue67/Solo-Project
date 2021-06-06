@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login/Register for Burger Barn</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     {% load static %}
     <!-- <link rel="stylesheet" href="{% static 'logreg/style.css' %}"> -->
 </head>
 <body>
     <div class="container">
         <div class="row">
-            <div class="col">
+            <div class="col-md-6">
                 {% if messages %}
                 <ul class="messages">
                     {% for message in messages %}
@@ -117,7 +117,7 @@
                     </form>
                 </section>
             </div>
-            <div class="col">
+            <div class="col-md-6">
                 <section>
                     <h2>Login</h2>
                     <form action="/login" method="POST">
