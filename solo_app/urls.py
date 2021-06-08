@@ -12,4 +12,5 @@ urlpatterns = [
     path('profile',views.profile),
     path('view-order',views.view_order),
     path('edit',views.edit),
+    path('delete',views.delete),
 ]

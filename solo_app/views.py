@@ -60,3 +60,25 @@ def view_order(request):
         'user': user
     }
     return render(request, 'view-order.html', context)
+
+def edit(request):
+    if 'user_id' not in request.session:
+        return redirect('/')
+    # update user info
+    to_update = User.objects.get(id=request.session['user_id'])
+    # updates each field
+    to_update.first_name = request.POST['first_name']
+    to_update.last_name = request.POST['last_name']
+    to_update.age = request.POST['age']
+    to_update.address = request.POST['address']
+    to_update.city = request.POST['city']
+    to_update.state = request.POST['state']
+    to_update.email = request.POST['email']
+    to_update.save()
+
+    return redirect('/success')
+
+def delete(request):
+    to_delete = User.objects.get(id=request.session['user_id'])
+    to_delete.delete()
+    return redirect('/')
