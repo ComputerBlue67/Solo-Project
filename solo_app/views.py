@@ -42,3 +42,21 @@ def success(request):
         'user': user
     }
     return render(request, 'dashboard.html', context)
+
+def profile(request):
+    if 'user_id' not in request.session:
+        return redirect('/')
+    user = User.objects.get(id=request.session['user_id'])
+    context = {
+        'user': user
+    }
+    return render(request, 'profile.html', context)
+
+def view_order(request):
+    if 'user_id' not in request.session:
+        return redirect('/')
+    user = User.objects.get(id=request.session['user_id'])
+    context = {
+        'user': user
+    }
+    return render(request, 'view-order.html', context)

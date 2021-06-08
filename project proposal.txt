@@ -25,6 +25,7 @@ Burger Barn
 3 setup favorties from the menu
 4 view past orders
 5 customize ingredients for burgers
+
 6 edit your details name age location etc
 7 delete account or past orders
 
