@@ -60,7 +60,7 @@ class UserManager(models.Manager):
             email = form['email'],
             password = pw,
         )
-        
+
 
 class User (models.Model):
     first_name = models.CharField(max_length=255)
@@ -75,3 +75,14 @@ class User (models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     objects = UserManager()
+
+class Order(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    customer = models.ForeignKey(User,related_name='user_orders',on_delete=models.CASCADE)
+    
+class Menu_item(models.Model):
+    item_name = models.CharField(max_length=200)
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+    description = models.TextField()
+    menu_items = models.ManyToManyField('Order',related_name='menu_items')

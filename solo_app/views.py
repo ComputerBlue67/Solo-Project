@@ -64,6 +64,11 @@ def view_order(request):
 def edit(request):
     if 'user_id' not in request.session:
         return redirect('/')
+    errors = User.objects.validate_profile(request.POST)
+    if errors:
+        for e in errors.values():
+            messages.error(request, e)
+        return redirect('/')
     # update user info
     to_update = User.objects.get(id=request.session['user_id'])
     # updates each field
