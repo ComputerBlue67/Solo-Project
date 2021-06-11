@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
-from .models import *
+from .models import User
+from .models import File
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
@@ -27,11 +28,12 @@ def login(request):
         return redirect('/')
     user = User.objects.get(email=request.POST['email'])
     request.session['user_id'] = user.id
-    messages.success(request, "You have successfully logged in!")
+    # messages.success(request, "You have successfully logged in!")
     return redirect('/success')
 
 def logout(request):
     request.session.clear()
+    messages.success(request, "You have successfully logged out!")
     return redirect('/')
 
 def success(request):
@@ -43,7 +45,7 @@ def success(request):
     }
     return render(request, 'dashboard.html', context)
 
-def profile(request):
+def view_profile(request):
     if 'user_id' not in request.session:
         return redirect('/')
     user = User.objects.get(id=request.session['user_id'])
@@ -52,22 +54,8 @@ def profile(request):
     }
     return render(request, 'profile.html', context)
 
-def view_order(request):
+def edit_profile(request):
     if 'user_id' not in request.session:
-        return redirect('/')
-    user = User.objects.get(id=request.session['user_id'])
-    context = {
-        'user': user
-    }
-    return render(request, 'view-order.html', context)
-
-def edit(request):
-    if 'user_id' not in request.session:
-        return redirect('/')
-    errors = User.objects.validate_profile(request.POST)
-    if errors:
-        for e in errors.values():
-            messages.error(request, e)
         return redirect('/')
     # update user info
     to_update = User.objects.get(id=request.session['user_id'])
@@ -83,7 +71,32 @@ def edit(request):
 
     return redirect('/success')
 
-def delete(request):
+def delete_profile(request):
     to_delete = User.objects.get(id=request.session['user_id'])
     to_delete.delete()
     return redirect('/')
+
+def view_menu(request):
+    if 'user_id' not in request.session:
+        return redirect('/')
+    return render(request,'view-menu.html')
+
+def suggest(request):
+    if 'user_id' not in request.session:
+        return redirect('/')
+    images = File.objects.all()
+    context = {
+        "images": images
+    }
+    return render(request,'suggest.html',context)
+
+def add_image(request):
+    if request.method == "POST":
+        new_file = File(file=request.FILES['image'])
+        new_file.save()
+        return redirect('/suggest-item')
+
+def delete_image(request):
+    to_delete = File.objects.get(request.FILES['images'])
+    to_delete.delete()
+    return redirect('/suggest-item')

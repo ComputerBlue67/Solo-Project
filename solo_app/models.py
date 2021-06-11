@@ -76,13 +76,5 @@ class User (models.Model):
 
     objects = UserManager()
 
-class Order(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    customer = models.ForeignKey(User,related_name='user_orders',on_delete=models.CASCADE)
-    
-class Menu_item(models.Model):
-    item_name = models.CharField(max_length=200)
-    price = models.DecimalField(max_digits=5, decimal_places=2)
-    description = models.TextField()
-    menu_items = models.ManyToManyField('Order',related_name='menu_items')
+class File(models.Model):
+    file = models.FileField(upload_to="images")

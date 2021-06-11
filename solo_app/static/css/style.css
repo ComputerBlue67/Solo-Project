@@ -1,0 +1,19 @@
+.main-icon{
+    margin-right: 55px;
+}
+.btn-primary{
+    margin-right: 15px;
+}
+.messages{
+    color: red;
+}
+.main-icon{
+    color: blue;
+}
+body{
+    background-color: aquamarine;
+}
+img{
+    height: 450px;
+    width: 600px;
+}
