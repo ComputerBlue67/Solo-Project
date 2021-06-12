@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
-from .models import User
+from .models import Menu_item, User
 from .models import File
 # Create your views here.
 def index(request):
@@ -79,24 +79,28 @@ def delete_profile(request):
 def view_menu(request):
     if 'user_id' not in request.session:
         return redirect('/')
-    return render(request,'view-menu.html')
+    menu_items = Menu_item.objects.all()
+    context = {
+        "menu_items": menu_items
+    }
+    return render(request,'view-menu.html',context)
 
-def suggest(request):
+def share(request):
     if 'user_id' not in request.session:
         return redirect('/')
     images = File.objects.all()
     context = {
         "images": images
     }
-    return render(request,'suggest.html',context)
+    return render(request,'share.html',context)
 
 def add_image(request):
     if request.method == "POST":
         new_file = File(file=request.FILES['image'])
         new_file.save()
-        return redirect('/suggest-item')
+        return redirect('/share')
 
-def delete_image(request):
-    to_delete = File.objects.get(request.FILES['images'])
-    to_delete.delete()
-    return redirect('/suggest-item')
+# def delete_image(request):
+#     to_delete = File.objects.get(request.FILES['images'])
+#     to_delete.delete()
+#     return redirect('/suggest-item')

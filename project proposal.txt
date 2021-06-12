@@ -10,9 +10,9 @@ COMPLETE(1) Application includes protected route (user must be in session to vie
 COMPLETE(1) Application features static content (CSS, images, JS)
 (1) Created data must be validated (events cannot be in the past, wall posts must include content, no duplicate data, etc)
 Bonus
-(1) Application is responsive
+COMPLETE(1) Application is responsive
 (1) Application is publicly deployed
-(1) File Upload
+COMPLETE(1) File Upload
 (1) Application features an API
 
 

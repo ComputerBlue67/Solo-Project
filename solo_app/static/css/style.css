@@ -14,6 +14,19 @@ body{
     background-color: aquamarine;
 }
 img{
-    height: 450px;
-    width: 600px;
+    height: 650px;
+    width: 800px;
+    margin-top: 50px;
+}
+#img-size{
+    height: 700px;
+}
+.jumbotron{
+    background-color: aquamarine;
+}
+h1,h2,h3,h4,h5,label,select,p{
+    color: blue;
+}
+.des-text{
+    color:white;
 }

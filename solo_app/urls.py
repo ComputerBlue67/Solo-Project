@@ -13,7 +13,7 @@ urlpatterns = [
     path('edit-profile',views.edit_profile),
     path('delete-profile',views.delete_profile),
     path('view-menu',views.view_menu),
-    path('suggest-item',views.suggest),
+    path('share',views.share),
     path('add-image',views.add_image),
-    path('delete-image',views.delete_image),
+    # path('delete-image',views.delete_image),
 ]

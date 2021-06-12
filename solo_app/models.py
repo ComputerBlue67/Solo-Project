@@ -78,3 +78,9 @@ class User (models.Model):
 
 class File(models.Model):
     file = models.FileField(upload_to="images")
+
+class Menu_item(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+    image = models.CharField(max_length=5000, null=True, blank=True)
